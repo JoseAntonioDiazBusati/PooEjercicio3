@@ -12,6 +12,27 @@ class Persona(var peso: Double, var altura: Double) {
         this.nombre = nombre
     }
 
+    fun saludar():String{
+        return "Hola, me llamo $nombre. Un placer!"
+    }
+
+    fun alturaEncimaMedia(): Boolean {
+        return altura >= 1.75
+    }
+
+    fun pesoEncimaMedia(): Boolean {
+        return peso >= 70
+    }
+
+    private fun obtenerDescImc(): String {
+        return when {
+            imc < 18.5 -> "peso insuficiente"
+            imc in 18.5..24.9 -> "peso saludable"
+            imc in 25.0..29.9 -> "sobrepeso"
+            else -> "obesidad"
+        }
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is Persona) return false
